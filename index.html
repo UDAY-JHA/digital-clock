@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            width:100vw;
+            height:100vh;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(to right, rgb(236, 72, 153), rgb(239, 68, 68), rgb(245, 158, 11));
+
+        }
+
+        .container{
+            width:fit-content;
+            height:fit-content;
+            padding: 20px;
+            font-size: 40px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <h1 id="time"></h1>
+    </div>
+    <script>
+        const date = new Date();
+        const time = date.toLocaleTimeString()
+        let hr = date.getHours()
+        let sec = date.getSeconds()
+        let min = date.getMinutes()
+        const show = document.getElementById('time')
+
+        function clock() {
+            setInterval(() => {
+                ++sec;
+                if (sec >= 60) {
+                    sec=0;
+                    ++min;
+                    if (min >= 60) {
+                        min=0;
+                        ++hr;
+                    }
+                }
+                show.innerText = hr + ":" + min + ":" + sec;
+            }, 1000);
+
+        };
+
+        clock();
+
+    </script>
+</body>
+
+</html>
